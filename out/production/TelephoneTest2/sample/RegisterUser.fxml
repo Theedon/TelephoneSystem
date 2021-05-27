@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="68.0" layoutY="68.0" text="First Name:" />
+      <TextField layoutX="160.0" layoutY="64.0" />
+      <Label layoutX="68.0" layoutY="121.0" text="Last Name:" />
+      <Label layoutX="68.0" layoutY="168.0" text="Gender:" />
+      <Label layoutX="68.0" layoutY="216.0" text="Job:" />
+      <Label layoutX="68.0" layoutY="267.0" text="Phone Number:" />
+      <TextField layoutX="160.0" layoutY="117.0" />
+      <TextField layoutX="160.0" layoutY="212.0" />
+      <TextField layoutX="160.0" layoutY="263.0" />
+      <Spinner layoutX="160.0" layoutY="164.0" />
+      <Button layoutX="206.0" layoutY="314.0" mnemonicParsing="false" text="SUBMIT" />
+   </children>
+</AnchorPane>
