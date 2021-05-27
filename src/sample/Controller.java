@@ -7,8 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class Controller {
+import java.awt.*;
 
+
+public class Controller {
     public void onClickButton(ActionEvent event)throws Exception{
         Parent root2= FXMLLoader.load(getClass().getResource("RegisterUser.fxml"));
         Scene secondScene= new Scene(root2, 500, 500);
@@ -16,5 +18,9 @@ public class Controller {
         secondStage.setScene(secondScene);
         secondStage.setTitle("This has worked succesfully");
         secondStage.show();
+
     }
+
+
+
 }
