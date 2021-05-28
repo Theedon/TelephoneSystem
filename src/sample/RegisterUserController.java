@@ -92,6 +92,7 @@ public class RegisterUserController implements Initializable {
             stage.close();
 
 
+
         }
         catch (Exception e){
             e.printStackTrace();

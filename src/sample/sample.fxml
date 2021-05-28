@@ -5,13 +5,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TableView layoutX="35.0" layoutY="15.0" prefHeight="302.0" prefWidth="490.0">
+      <TableView fx:id="tvPhoneTable" layoutX="35.0" layoutY="15.0" prefHeight="302.0" prefWidth="490.0">
         <columns>
-            <TableColumn prefWidth="45.0" text="ID" />
-          <TableColumn prefWidth="98.0" text="NAME" />
-          <TableColumn prefWidth="155.0" text="E-MAIL" />
-            <TableColumn prefWidth="54.0" text="GENDER" />
-            <TableColumn minWidth="0.0" prefWidth="137.0" text="PHONE" />
+            <TableColumn fx:id="colId" prefWidth="45.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="98.0" text="NAME" />
+          <TableColumn fx:id="colEmail" prefWidth="155.0" text="E-MAIL" />
+            <TableColumn fx:id="colGender" prefWidth="54.0" text="GENDER" />
+            <TableColumn fx:id="colPhone" minWidth="0.0" prefWidth="137.0" text="PHONE" />
         </columns>
       </TableView>
       <Button fx:id="button" layoutX="531.0" layoutY="70.0" mnemonicParsing="false" onAction="#onClickButton" prefHeight="25.0" prefWidth="52.0" text="ADD" />
