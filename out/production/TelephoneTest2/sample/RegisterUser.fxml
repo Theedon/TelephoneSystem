@@ -12,13 +12,19 @@
       <Label layoutX="68.0" layoutY="216.0" text="PHONE" />
       <TextField fx:id="idEmail" layoutX="160.0" layoutY="117.0" />
       <TextField fx:id="idPhone" layoutX="160.0" layoutY="212.0" />
-      <Button layoutX="206.0" layoutY="263.0" mnemonicParsing="false" onAction="#onClickSubmit" text="SUBMIT" />
       <RadioButton fx:id="Male" layoutX="160.0" layoutY="169.0" mnemonicParsing="false" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="group" />
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="Female" layoutX="257.0" layoutY="168.0" mnemonicParsing="false" text="Female" toggleGroup="$group" />
+      <VBox layoutX="185.0" layoutY="249.0" prefHeight="116.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onClickAdd" prefHeight="25.0" prefWidth="103.0" text="ADD" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="DELETE" />
+            <Button fx:id="btnUpdate" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="UPDATE" />
+         </children>
+      </VBox>
            
    </children>
 </AnchorPane>

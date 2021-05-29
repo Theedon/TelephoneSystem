@@ -8,55 +8,62 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.concurrent.ConcurrentNavigableMap;
+
 
 
 public class Controller implements Initializable {
+
+    Contacts contactsToBeSent;
+
+    String intent= "";
 
     @FXML
     private TableView<Contacts> tvPhoneTable;
 
     @FXML
-    TableColumn<Contacts, Integer> colId;
+    private TableColumn<Contacts, Integer> colId;
 
     @FXML
-    TableColumn<Contacts, String> colName;
+    private TableColumn<Contacts, String> colName;
 
     @FXML
-    TableColumn<Contacts, String> colEmail;
+    private TableColumn<Contacts, String> colEmail;
 
     @FXML
-    TableColumn<Contacts, String> colGender;
+    private TableColumn<Contacts, String> colGender;
 
     @FXML
-    TableColumn<Contacts, String> colPhone;
+    private TableColumn<Contacts, String> colPhone;
+
+    @FXML
+    private Button btnAdd;
+
+    @FXML
+    private Button btnUpdate;
+
+    @FXML
+    private Button btnDelete;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showContacts();
     }
 
-
-    public void onClickButton(ActionEvent event)throws Exception{
-        Parent root2= FXMLLoader.load(getClass().getResource("RegisterUser.fxml"));
-        Scene secondScene= new Scene(root2, 500, 500);
-        Stage secondStage= new Stage();
-        secondStage.setScene(secondScene);
-        secondStage.setTitle("This has worked succesfully");
-        secondStage.show();
-
-    }
 
     public ObservableList<Contacts> getContactList(){
         ObservableList<Contacts> contactList= FXCollections.observableArrayList();
@@ -85,6 +92,7 @@ public class Controller implements Initializable {
         catch (Exception e){
             e.printStackTrace();
         }
+
         return contactList;
 
     }
@@ -99,6 +107,72 @@ public class Controller implements Initializable {
         colPhone.setCellValueFactory(new PropertyValueFactory<Contacts, String>("phone"));
 
         tvPhoneTable.setItems(list);
+
+    }
+
+    @FXML
+    private void handleMouseAction(MouseEvent event){
+        contactsToBeSent= tvPhoneTable.getSelectionModel().getSelectedItem();
+    }
+
+
+
+    public void onClickAdd(ActionEvent event)throws Exception{
+
+        intent= "add";
+
+        Parent root2= FXMLLoader.load(getClass().getResource("RegisterUser.fxml"));
+        Scene secondScene= new Scene(root2, 500, 500);
+        Stage secondStage= new Stage();
+        secondStage.setScene(secondScene);
+        secondStage.setTitle("Add a new user");
+        secondStage.show();
+    }
+
+    @FXML
+    private void onClickDelete(ActionEvent event) throws IOException {
+
+        intent= "delete";
+
+        Parent root2= FXMLLoader.load(getClass().getResource("RegisterUser.fxml"));
+        Scene secondScene= new Scene(root2, 500, 500);
+        Stage secondStage= new Stage();
+        secondStage.setScene(secondScene);
+        secondStage.setTitle("Add a new user");
+        secondStage.show();
+
+
+    }
+
+    @FXML
+    private void onClickUpdate(ActionEvent event){
+
+        intent= "update";
+
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("RegisterUser.fxml"));
+
+        try{
+            Parent root= (Parent) loader.load();
+
+            RegisterUserController registerUserController= loader.getController();
+
+            if(contactsToBeSent==null){
+                Alert alert= new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Select a row to be updated before clicking the update button");
+                alert.show();
+            }
+            else {
+                registerUserController.sendData(contactsToBeSent);
+                Stage stage= new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+
+        }
+        catch (IOException e){
+           e.printStackTrace();
+        }
+
 
     }
 
