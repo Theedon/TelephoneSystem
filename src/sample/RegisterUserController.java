@@ -81,9 +81,9 @@ public class RegisterUserController implements Initializable {
         if (name.isEmpty() || email.isEmpty() || selectedRadioButton == null || phone.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Please fill out the fields");
-
             alert.show();
-        } else {
+        }
+        else {
             String toggleGroupValue = selectedRadioButton.getText();
 
             if (toggleGroupValue.equals("Male")) {
@@ -115,7 +115,63 @@ public class RegisterUserController implements Initializable {
 
     }
 
+    public void onClickUpdate(ActionEvent event){
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+
+        String table_name = "phone_table";
+        String name = idName.getText();
+        String email = idEmail.getText();
+        String gender = null;
+        String phone = idPhone.getText();
+
+        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
+
+
+        if (name.isEmpty() || email.isEmpty() || selectedRadioButton == null || phone.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Please fill out the fields");
+            alert.show();
+        }
+        else {
+            String toggleGroupValue = selectedRadioButton.getText();
+
+            if (toggleGroupValue.equals("Male")) {
+                gender = "M";
+            } else if (toggleGroupValue.equals("Female")) {
+                gender = "F";
+            }
+
+
+            String query = "UPDATE phone_table SET name = '"+name+"', email = '"+email+
+                    "', gender = '"+gender+"', phone = '"+phone+"' WHERE id = "+contacts.getId()+"";
+
+            try {
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+                //System.out.println("done!");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.show();
+                alert.setContentText("successful!");
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void onClickDelete(ActionEvent event){
+
+    }
+
+
     public void sendData(Contacts contactReceived, String intent) {
+
+
 
         if (intent.equals("update")) {
 
@@ -161,4 +217,12 @@ public class RegisterUserController implements Initializable {
 
 
     }
+
+
+
+
+
+
+
+
 }
