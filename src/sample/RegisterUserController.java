@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
+import javax.xml.crypto.Data;
 import java.net.URL;
 import java.sql.Connection;
 
@@ -48,81 +49,65 @@ public class RegisterUserController implements Initializable {
 
     ToggleGroup group;
 
-    public void initialize(URL location, ResourceBundle resources){
-        group= new ToggleGroup();
+    public void initialize(URL location, ResourceBundle resources) {
+        group = new ToggleGroup();
         Male.setToggleGroup(group);
         Female.setToggleGroup(group);
 
-        if(true){
+        if (true) {
             btnUpdate.setVisible(false);
             btnDelete.setVisible(false);
         }
 
 
-
     }
 
 
+    public void onClickAdd(ActionEvent event) {
 
 
-    public void onClickAdd(ActionEvent event){
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
 
-
-
-
-
-        DatabaseConnection databaseConnection= new DatabaseConnection();
-        Connection connection= databaseConnection.getConnection();
-
-        String table_name= "phone_table";
-        String name= idName.getText();
-        String email= idEmail.getText();
+        String table_name = "phone_table";
+        String name = idName.getText();
+        String email = idEmail.getText();
         String gender = null;
-        String phone= idPhone.getText();
+        String phone = idPhone.getText();
 
-        RadioButton selectedRadioButton= (RadioButton) group.getSelectedToggle();
+        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
 
 
-
-        if(name.isEmpty()||email.isEmpty()||selectedRadioButton==null||phone.isEmpty()){
-            Alert alert= new Alert(Alert.AlertType.INFORMATION);
+        if (name.isEmpty() || email.isEmpty() || selectedRadioButton == null || phone.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Please fill out the fields");
 
             alert.show();
-        }
-        else {
-            String toggleGroupValue= selectedRadioButton.getText();
+        } else {
+            String toggleGroupValue = selectedRadioButton.getText();
 
-            if(toggleGroupValue.equals("Male")){
-                gender= "M";
-            }
-            else if(toggleGroupValue.equals("Female")){
-                gender= "F";
+            if (toggleGroupValue.equals("Male")) {
+                gender = "M";
+            } else if (toggleGroupValue.equals("Female")) {
+                gender = "F";
             }
 
 
+            String query = "INSERT INTO " + table_name + "(name, email, gender, phone)" +
+                    "VALUES('" + name + "', '" + email + "', '" + gender + "', '" + phone + "')";
 
-
-
-
-
-            String query= "INSERT INTO "+table_name+"(name, email, gender, phone)" +
-                    "VALUES('"+name+"', '"+email+"', '"+gender+"', '"+phone+"')";
-
-            try{
-                Statement statement= connection.createStatement();
+            try {
+                Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
                 //System.out.println("done!");
-                Alert alert= new Alert(Alert.AlertType.NONE);
+                Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.show();
                 alert.setContentText("successful!");
-                stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
 
 
-
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -130,24 +115,50 @@ public class RegisterUserController implements Initializable {
 
     }
 
-    public void sendData(Contacts contactReceived){
-        contacts= contactReceived;
-        idName.setText(contacts.getName());
-        idEmail.setText(contacts.getEmail());
-        idPhone.setText(contacts.getPhone());
+    public void sendData(Contacts contactReceived, String intent) {
+
+        if (intent.equals("update")) {
+
+            contacts = contactReceived;
+            idName.setText(contacts.getName());
+            idEmail.setText(contacts.getEmail());
+
+            if (contacts.getGender().equals("M")) {
+
+                group.selectToggle(Male);
+            } else if (contacts.getGender().equals("F")) {
+                group.selectToggle(Female);
+            }
+
+            idPhone.setText(contacts.getPhone());
+
+            btnUpdate.setVisible(true);
+            btnAdd.setVisible(false);
+            btnDelete.setVisible(false);
 
 
-
-        if(contacts.getGender().equals("M")){
-
-            group.selectToggle(Male);
         }
-        else if(contacts.getGender().equals("F")){
-            group.selectToggle(Female);
+
+        if(intent.equals("delete")){
+            contacts = contactReceived;
+            idName.setText(contacts.getName());
+            idEmail.setText(contacts.getEmail());
+
+            if (contacts.getGender().equals("M")) {
+
+                group.selectToggle(Male);
+            } else if (contacts.getGender().equals("F")) {
+                group.selectToggle(Female);
+            }
+
+            idPhone.setText(contacts.getPhone());
+
+            btnUpdate.setVisible(false);
+            btnAdd.setVisible(false);
+            btnDelete.setVisible(true);
+
         }
 
 
     }
-
-
 }

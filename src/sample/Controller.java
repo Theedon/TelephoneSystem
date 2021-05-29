@@ -31,6 +31,7 @@ public class Controller implements Initializable {
     Contacts contactsToBeSent;
 
     String intent= "";
+    //this String stores the value for which button was clicked on sample.fxml
 
     @FXML
     private TableView<Contacts> tvPhoneTable;
@@ -134,12 +135,27 @@ public class Controller implements Initializable {
 
         intent= "delete";
 
-        Parent root2= FXMLLoader.load(getClass().getResource("RegisterUser.fxml"));
-        Scene secondScene= new Scene(root2, 500, 500);
-        Stage secondStage= new Stage();
-        secondStage.setScene(secondScene);
-        secondStage.setTitle("Add a new user");
-        secondStage.show();
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("RegisterUser.fxml"));
+        try {
+            Parent root= (Parent) loader.load();
+            RegisterUserController registerUserController= loader.getController();
+
+            if(contactsToBeSent==null){
+                Alert alert= new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Select a row to be updated before clicking the update button");
+                alert.show();
+            }
+            else {
+                registerUserController.sendData(contactsToBeSent, intent);
+                Stage stage= new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Delete an existing user");
+                stage.show();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }
@@ -162,9 +178,10 @@ public class Controller implements Initializable {
                 alert.show();
             }
             else {
-                registerUserController.sendData(contactsToBeSent);
+                registerUserController.sendData(contactsToBeSent, intent);
                 Stage stage= new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle("Update an existing user");
                 stage.show();
             }
 
