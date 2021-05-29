@@ -170,11 +170,9 @@ public class RegisterUserController implements Initializable {
 
 
 
-        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
 
-            idName.setEditable(false);
-            idEmail.setEditable(false);
-            idPhone.setEditable(false);
+
+
             String query = "DELETE FROM phone_table WHERE id = '"+contacts.getId()+"'";
 
             try {
@@ -222,6 +220,15 @@ public class RegisterUserController implements Initializable {
         }
 
         if(intent.equals("delete")){
+
+            idName.setEditable(false);
+            idEmail.setEditable(false);
+            Male.setDisable(true);
+            Female.setDisable(true);
+            idPhone.setEditable(false);
+
+
+
             contacts = contactReceived;
             idName.setText(contacts.getName());
             idEmail.setText(contacts.getEmail());
