@@ -165,6 +165,32 @@ public class RegisterUserController implements Initializable {
     }
 
     public void onClickDelete(ActionEvent event){
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+
+
+
+        RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
+
+            idName.setEditable(false);
+            idEmail.setEditable(false);
+            idPhone.setEditable(false);
+            String query = "DELETE FROM phone_table WHERE id = '"+contacts.getId()+"'";
+
+            try {
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+                //System.out.println("done!");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.show();
+                alert.setContentText("user "+contacts.getName()+" deleted succesfully");
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
     }
 

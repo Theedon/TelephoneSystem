@@ -142,7 +142,7 @@ public class Controller implements Initializable {
 
             if(contactsToBeSent==null){
                 Alert alert= new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Select a row to be updated before clicking the update button");
+                alert.setContentText("Select a row to be deleted first");
                 alert.show();
             }
             else {
@@ -174,7 +174,7 @@ public class Controller implements Initializable {
 
             if(contactsToBeSent==null){
                 Alert alert= new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Select a row to be updated before clicking the update button");
+                alert.setContentText("Select a row to be updated first");
                 alert.show();
             }
             else {
