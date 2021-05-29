@@ -100,7 +100,7 @@ public class RegisterUserController implements Initializable {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
                 //System.out.println("done!");
-                Alert alert = new Alert(Alert.AlertType.NONE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.show();
                 alert.setContentText("successful!");
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
