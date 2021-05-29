@@ -221,11 +221,11 @@ public class RegisterUserController implements Initializable {
 
         if(intent.equals("delete")){
 
-            idName.setEditable(false);
-            idEmail.setEditable(false);
+            idName.setDisable(true);
+            idEmail.setDisable(true);
             Male.setDisable(true);
             Female.setDisable(true);
-            idPhone.setEditable(false);
+            idPhone.setDisable(true);
 
 
 
