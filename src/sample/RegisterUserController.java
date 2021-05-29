@@ -47,6 +47,7 @@ public class RegisterUserController implements Initializable {
     @FXML
     private RadioButton Female;
 
+    @FXML
     ToggleGroup group;
 
     public void initialize(URL location, ResourceBundle resources) {
