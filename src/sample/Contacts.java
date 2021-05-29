@@ -2,13 +2,15 @@ package sample;
 
 public class Contacts {
 
+    private int serialNumber;
     private int id;
     private String name;
     private String email;
     private String gender;
     private String phone;
 
-    public Contacts(int id, String name, String email, String gender, String phone) {
+    public Contacts(int serialNumber, int id, String name, String email, String gender, String phone) {
+        this.serialNumber= serialNumber;
         this.id = id;
         this.name = name;
         this.email = email;
@@ -16,6 +18,13 @@ public class Contacts {
         this.phone = phone;
     }
 
+    public int getSerialNumber(){
+        return serialNumber;
+    }
+
+    public void setSerialNumber(){
+        this.serialNumber= serialNumber;
+    }
     public int getId() {
         return id;
     }

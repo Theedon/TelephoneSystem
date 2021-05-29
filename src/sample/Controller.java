@@ -60,6 +60,9 @@ public class Controller implements Initializable {
     @FXML
     private Button btnDelete;
 
+    @FXML
+    private TableColumn<Contacts, Integer> colSN;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showContacts();
@@ -79,15 +82,17 @@ public class Controller implements Initializable {
             statement= connection.createStatement();
             resultSet= statement.executeQuery(query);
             Contacts contact;
-
+            int serialNumber= 1;
             while(resultSet.next()){
-                contact= new Contacts(resultSet.getInt("id"),
+                contact= new Contacts(serialNumber,
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("email"),
                         resultSet.getString("gender"),
                         resultSet.getString("phone")
                         );
                 contactList.add(contact);
+                serialNumber++;
             }
         }
         catch (Exception e){
@@ -101,6 +106,7 @@ public class Controller implements Initializable {
     public void showContacts(){
         ObservableList<Contacts> list= getContactList();
 
+        colSN.setCellValueFactory(new PropertyValueFactory<Contacts, Integer>("serialNumber"));
         colId.setCellValueFactory(new PropertyValueFactory<Contacts, Integer>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<Contacts, String>("name"));
         colEmail.setCellValueFactory(new PropertyValueFactory<Contacts, String>("email"));
