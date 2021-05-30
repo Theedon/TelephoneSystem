@@ -190,7 +190,9 @@ public class RegisterUserController implements Initializable {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
 
+                Controller.getInstance().contactsToBeSent=null;
                 Controller.getInstance().showContacts();
+
 
             } catch (Exception e) {
                 e.printStackTrace();
