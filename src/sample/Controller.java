@@ -139,7 +139,7 @@ public class Controller implements Initializable {
         intent= "add";
 
         Parent root2= FXMLLoader.load(getClass().getResource("RegisterUser.fxml"));
-        Scene secondScene= new Scene(root2, 500, 500);
+        Scene secondScene= new Scene(root2, 409, 349);
         Stage secondStage= new Stage();
         secondStage.setScene(secondScene);
         secondStage.setTitle("Add a new user");
