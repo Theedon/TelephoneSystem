@@ -63,6 +63,16 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<Contacts, Integer> colSN;
 
+    public static Controller instance;
+
+    public Controller(){
+        instance= this;
+    }
+
+    public static Controller getInstance(){
+        return instance;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showContacts();
