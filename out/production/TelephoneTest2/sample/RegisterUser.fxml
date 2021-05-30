@@ -3,26 +3,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane accessibleText="4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegisterUserController">
+<AnchorPane accessibleText="4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="409.0" stylesheets="@design.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegisterUserController">
    <children>
-      <Label layoutX="68.0" layoutY="68.0" text="NAME" />
+      <Label layoutX="68.0" layoutY="68.0" styleClass="labels" text="NAME" />
       <TextField fx:id="idName" layoutX="160.0" layoutY="64.0" />
-      <Label layoutX="68.0" layoutY="121.0" text="E-MAIL" />
-      <Label layoutX="68.0" layoutY="168.0" text="GENDER" />
-      <Label layoutX="68.0" layoutY="216.0" text="PHONE" />
+      <Label layoutX="68.0" layoutY="121.0" styleClass="labels" text="E-MAIL" />
+      <Label layoutX="68.0" layoutY="168.0" styleClass="labels" text="GENDER" />
+      <Label layoutX="68.0" layoutY="216.0" styleClass="labels" text="PHONE" />
       <TextField fx:id="idEmail" layoutX="160.0" layoutY="117.0" />
       <TextField fx:id="idPhone" layoutX="160.0" layoutY="212.0" />
-      <RadioButton fx:id="Male" layoutX="160.0" layoutY="169.0" mnemonicParsing="false" text="Male">
+      <RadioButton fx:id="Male" layoutX="160.0" layoutY="169.0" mnemonicParsing="false" styleClass="radio" text="Male">
          <toggleGroup>
             <ToggleGroup fx:id="group" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="Female" layoutX="257.0" layoutY="168.0" mnemonicParsing="false" text="Female" toggleGroup="$group" />
+      <RadioButton fx:id="Female" layoutX="257.0" layoutY="168.0" mnemonicParsing="false" styleClass="radio" text="Female" toggleGroup="$group" />
       <VBox layoutX="185.0" layoutY="249.0" prefHeight="116.0" prefWidth="100.0">
          <children>
-            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onClickAdd" prefHeight="25.0" prefWidth="103.0" text="ADD" />
-            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="25.0" prefWidth="101.0" text="DELETE" />
-            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#onClickUpdate" prefHeight="25.0" prefWidth="101.0" text="UPDATE" />
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onClickAdd" prefHeight="25.0" prefWidth="103.0" text="ADD" textFill="#fffbfb" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="25.0" prefWidth="101.0" text="DELETE" textFill="#f5f5f5" />
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#onClickUpdate" prefHeight="25.0" prefWidth="101.0" text="UPDATE" textFill="#eeebeb" />
          </children>
       </VBox>
            

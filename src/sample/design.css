@@ -1,0 +1,40 @@
+
+
+*{
+    -fx-primary: #2A2E37;
+    -fx-secondary: #FFFFAB;
+    -fx-primaryText: #B2B2B2;
+}
+
+.root{
+    -fx-background-color: #800000;
+}
+
+.button{
+    -fx-text-fill: #FFFFAB;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #000000;
+    -fx-font-family: verdana;
+}
+
+.text-field{
+    -fx-text-fill: #FFFFAB;
+    -fx-font-size: 13px;
+    -jfx-focus-color: -fx-secondary;
+    -fx-background-color: #800000;
+    -fx-border-color: #FFFFAB;
+
+}
+
+.labels{
+    -fx-text-fill: #FFFFAB;
+    -fx-font-family: verdana;
+
+}
+
+.radio{
+    -fx-text-fill: #FFFFAB;
+
+}
