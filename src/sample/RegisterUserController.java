@@ -107,6 +107,8 @@ public class RegisterUserController implements Initializable {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
 
+                Controller.getInstance().showContacts();
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -157,6 +159,8 @@ public class RegisterUserController implements Initializable {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
 
+                Controller.getInstance().showContacts();
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -186,6 +190,7 @@ public class RegisterUserController implements Initializable {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
 
+                Controller.getInstance().showContacts();
 
             } catch (Exception e) {
                 e.printStackTrace();
