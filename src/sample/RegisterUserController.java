@@ -84,6 +84,17 @@ public class RegisterUserController implements Initializable {
             alert.setContentText("Please fill out the fields");
             alert.show();
         }
+
+        else if (ValidateInput.ValidateEmail(email)==false){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("make sure your email is correct");
+            alert.show();
+        }
+        else if (ValidateInput.ValidatePhone(phone)==false){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("make sure your phone number is correct");
+            alert.show();
+        }
         else {
             String toggleGroupValue = selectedRadioButton.getText();
 
