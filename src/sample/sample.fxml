@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseAction" prefHeight="400.0" prefWidth="600.0" stylesheets="@DesignSample.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TableView fx:id="tvPhoneTable" layoutX="35.0" layoutY="15.0" onMouseClicked="#handleMouseAction" prefHeight="302.0" prefWidth="490.0">
+      <TableView fx:id="tvPhoneTable" layoutX="19.0" layoutY="15.0" onMouseClicked="#handleMouseAction" prefHeight="361.0" prefWidth="478.0" styleClass="tableview">
         <columns>
             <TableColumn fx:id="colSN" minWidth="0.0" prefWidth="52.0" text="S/N" />
             <TableColumn fx:id="colId" prefWidth="39.0" text="ID" />
@@ -15,11 +15,11 @@
             <TableColumn fx:id="colPhone" minWidth="0.0" prefWidth="118.0" text="PHONE" />
         </columns>
       </TableView>
-      <VBox layoutX="533.0" layoutY="15.0" prefHeight="200.0" prefWidth="64.0" spacing="15.0">
+      <VBox layoutX="505.0" layoutY="15.0" prefHeight="361.0" prefWidth="81.0" spacing="100.0">
          <children>
-            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onClickAdd" prefHeight="25.0" prefWidth="52.0" text="ADD" />
-            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onClickDelete" text="DELETE" />
-            <Button fx:id="btnUodate" mnemonicParsing="false" onAction="#onClickUpdate" prefHeight="25.0" prefWidth="66.0" text="UPDATE" />
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#onClickAdd" prefHeight="50.0" prefWidth="80.0" styleClass="buttons" text="ADD" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="50.0" prefWidth="80.0" styleClass="buttons" text="DELETE" />
+            <Button fx:id="btnUodate" mnemonicParsing="false" onAction="#onClickUpdate" prefHeight="50.0" prefWidth="80.0" styleClass="buttons" text="UPDATE" />
          </children>
       </VBox>
    </children>
